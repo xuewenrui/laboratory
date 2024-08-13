@@ -1,23 +1,23 @@
 import React from 'react';
 import {Layout, Typography, Divider, Card} from 'antd';
-import GlobalLayout from "@/layouts/GlobalLayout"; // 假设这是你的全局布局组件
+import GlobalLayout from "@/layouts/GlobalLayout";
 
 const {Title, Paragraph} = Typography;
 
 function Index() {
-    // 自定义标题样式
+    // !自定义标题样式
     const customTitleStyle = {
         fontWeight: 'bold',
         color: '#133da7',
         marginBottom: 20, // 增加底部间距
     };
 
-    // 自定义段落样式
+    // !自定义段落样式
     const customParagraphStyle = {
         lineHeight: 1.8, // 调整行高
         marginBottom: 20, // 增加底部间距
     };
-    // 自定义段落容器样式（用于缩进）
+    // !自定义段落容器样式（用于缩进）
     const customParagraphContainerStyle = {
         paddingLeft: '2em', // 添加左内边距以实现缩进效果
         marginBottom: 20, // 增加底部间距

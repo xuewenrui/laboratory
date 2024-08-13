@@ -10,7 +10,7 @@ const {Header, Content, Footer} = Layout;
 
 function BasicLayout({children}) {
 
-    // 设置Header的背景色和padding来增加高度
+    // !设置Header的背景色和padding来增加高度
     const headerStyle = {
         backgroundColor: '#fff',
         padding: '0 20px',
@@ -19,7 +19,7 @@ function BasicLayout({children}) {
         alignItems: 'center',
         height: '80px', // 增加头部高度
     };
-    // 设置logo的样式，包括增加高度
+    // !设置logo的样式，包括增加高度
     const logoStyle = {
         height: '64px', // 增加logo的高度
         width: 'auto', // 保持logo的宽高比
@@ -31,7 +31,6 @@ function BasicLayout({children}) {
         background: 'black',
         color: 'white',
         textAlign: 'center',
-        //padding: '20px 0'
     }
     const linkStyle = {
         marginRight: 40, // 设置菜单项之间的间距
@@ -40,7 +39,7 @@ function BasicLayout({children}) {
         fontSize: '16px',
         textAlign: 'center',
     }
-    //导航栏项列表
+    //!导航栏项列表
     const menuItems = [
         {key: '/', label: '首页'},
         {key: '/about', label: '关于我们'},
@@ -50,13 +49,13 @@ function BasicLayout({children}) {
         {key: '/publications', label: '出版'},
         {key: '/contact', label: '联系我们'},
     ]
-    //搜索函数
+    //!搜索函数
     const onSearch = (value: string) => console.log(value);
-    //设置导航栏选中
+    //!设置导航栏选中
     const location = useLocation();
     const [selectedKeys, setSelectedKeys] = useState([]);
     useEffect(() => {
-        // 根据当前路由设置selectedKeys
+        // !根据当前路由设置selectedKeys
         //console.log(location.pathname)
         const lastIndex = location.pathname.lastIndexOf('/'); // 去除字符串
         const lastPart = lastIndex !== -1 ? location.pathname.slice(lastIndex) : '/'
@@ -65,14 +64,12 @@ function BasicLayout({children}) {
         setSelectedKeys([lastPart]);
     }, [location.pathname]);
 
-    // NavMenu 组件，用于显示菜单项
+    //! NavMenu 组件，用于显示菜单项
     const NavMenu = () => (
     <div style={{
         width:'100%',
         padding: '1px 0',
         backgroundColor: '#f0f0f0',
-      /*  display: 'flex',
-        justifyContent: 'center'*/
     }}>
         <Menu theme="light" mode="horizontal" selectedKeys={selectedKeys}>
             {menuItems.map(item => (
