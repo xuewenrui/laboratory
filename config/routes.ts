@@ -28,18 +28,24 @@ export default [
     {
         path: '/articles',
         component: '@/pages/article', // 指向文章页面的组件
-       /* routes: [ // 嵌套路由示例
-            {
-                path: '/article/:id', // 动态路由，:id 是动态参数
-                component: '@/pages/article/detail', // 指向文章详情页面的组件
-            },
-        ],*/
+        name:'文章阅览'
+    },
+    {
+        path: '/article/:id', // 动态路由，:id 是动态参数
+        component: '@/pages/article/detail', // 指向文章详情页面的组件
+    },
+    {
+        path: '/student/:id', // 动态路由，:id 是动态参数
+        component: '@/pages/members/detail', // 指向详情页面的组件
+    },
+    {
+        path: '/teacher/:id', // 动态路由，:id 是动态参数
+        component: '@/pages/members/detail', // 指向详情页面的组件
     },
     {
         component: "@/pages/contact",
         path: "/contact",
         name: "联系我们",
-        //layout:'@/layouts/GlobalLayout',
     },
     /*自定义404页面*/
     {

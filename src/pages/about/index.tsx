@@ -25,7 +25,16 @@ function Index() {
     return (
         <GlobalLayout>
             <Layout style={{margin: '20px'}}>
-                <Card style={{width: 1000, margin: 'auto'}}>
+                <Card  style={{
+                    width: '100%',
+                    maxWidth: '1000px', // 稍微增加宽度以适应更多内容
+                    margin: '20px auto', // 水平和垂直居中
+                    padding: '20px',
+                    borderRadius: 12, // 更大的边框半径
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.1)', // 更明显的阴影
+                    backgroundColor: '#fff',
+                    overflow: 'hidden', // 防止内容溢出
+                }}>
                     <Title level={3} style={customTitleStyle}>实验室介绍</Title>
                     <div style={customParagraphContainerStyle}>
                         <Paragraph style={customParagraphStyle}>
@@ -42,7 +51,7 @@ function Index() {
                         <Paragraph style={customParagraphStyle}>
                             毛晓伟，研究员、博士生导师。主要研究领域为复杂性状的因果标志物解析。近年来主要从事人类疾病及相关性状的因果标志物解析，以第一作者或通讯作者（含共同）于Cell、Science、Science
                             Bulletin等高水平学术期刊发表SCI论文，并入选中科院率先行动人才计划和北京市科技新星计划（医学方向）。研究成果包括了解锁东亚人群典型疾病相关复杂性状重要基因的适应及受选择过程、系统揭示全球人群格局的形成历史和适应趋势、动物疾病模型的构建和生命大数据相关计算生物学方法的开发等。主持国家自然科学基金交叉学部优秀青年科学基金、四川省留学回国人员科技活动项目择优资助、科技部国家重点研发计划项目课题等重要科研项目。
-                            个人主页：https://www.iffs.uestc.edu.cn/info/1018/5129.html
+                            个人主页：https://www.iffs.uestc.edu.cn/info/1018/5129.htm
                         </Paragraph>
                     </div>
 

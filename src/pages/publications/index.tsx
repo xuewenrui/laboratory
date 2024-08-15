@@ -1,14 +1,16 @@
 import GlobalLayout from "@/layouts/GlobalLayout";
-import {Layout} from "antd";
+import {Card, Layout} from "antd";
 
 function Index() {
 
     return (
-        <GlobalLayout>
-            <Layout>
-                <h1>出版</h1>
-            </Layout>
 
+        <GlobalLayout>
+            <Layout style={{margin: '20px'}}>
+                <Card style={{width: 1000, margin: 'auto'}}>
+                    出版 {/*待定*/}
+                </Card>
+            </Layout>
         </GlobalLayout>
     )
 }

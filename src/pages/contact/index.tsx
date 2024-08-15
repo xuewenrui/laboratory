@@ -1,17 +1,17 @@
 import GlobalLayout from "@/layouts/GlobalLayout";
-import {Layout} from "antd";
+import {Card, Layout} from "antd";
 
 function Index() {
 
     return (
 
         <GlobalLayout>
-            <Layout>
-                <h1>联系我们</h1>
+            <Layout style={{margin: '20px'}}>
+                <Card style={{width: 1000, margin: 'auto'}}>
+                    关于我们  {/*待定*/}
+                </Card>
             </Layout>
-
         </GlobalLayout>
-
     )
 }
 

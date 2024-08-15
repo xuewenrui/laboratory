@@ -1,0 +1,42 @@
+/* MemberCard.css */
+.member-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+.member-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.member-info h2 {
+    font-size: 24px; /* 或者使用Ant Design的Typography组件来控制标题大小 */
+    margin-bottom: 8px;
+}
+
+.member-info p {
+    margin: 4px 0;
+}
+
+.member-info .ant-icon {
+    margin-right: 10px; /* 对于较小的图标，如MailOutlined，可能需要调整间距 */
+}
+.member-info span{
+    font-weight: bold;
+}
+
+/*tabpane字体*/
+.custom-tab-label {
+    font-size: 16px; /* 调整字体大小以减少拥挤感 */
+    color: #333; /* 设置字体颜色 */
+    /* 可以添加更多样式，如字体权重、文本对齐等 */
+}
+/*p标签样式*/
+.tab-paragraph {
+    font-size: 16px; /* 自定义段落字体大小 */
+    line-height: 1.6; /* 自定义行高来控制间距 */
+    color: #666; /* 自定义文本颜色 */
+}

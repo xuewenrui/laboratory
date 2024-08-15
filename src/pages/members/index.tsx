@@ -1,176 +1,93 @@
-import React, {useState} from 'react';
-import {Card, Menu, Layout, List, Avatar, Typography} from 'antd';
-import {UserOutlined} from '@ant-design/icons';
+import {Typography} from 'antd';
 import GlobalLayout from "@/layouts/GlobalLayout";
-
 const {Title} = Typography;
+import React from 'react';
+import {Card, Row, Col} from 'antd';
+import {Link} from 'react-router-dom'; //使用react-router-dom进行路由管理
+import image1 from '../../assets/a.jpg'
+import image2 from '../../assets/b.jpg'
+//!老师信息列表
+const teachers = [
+    {id: 1, name: '毛晓伟', position: '教授', imageUrl: `${image1}`, detailUrl: `/teacher/1`},
+    {id: 2, name: '明老师', position: '教授', imageUrl: `${image1}`, detailUrl: `/teacher/2`},
+    {id: 3, name: '王老师', position: '教授', imageUrl: `${image1}`, detailUrl: `/teacher/3`},
+];
+//!学生信息列表
+const students = [
+    // ... 其他学生数据
+];
+for (let i = 1; i <= 20; i++) {
+    students.push({
+        id: i,
+        name: '小明' + i,
+        position: '学生',
+        imageUrl: `${image2}`,
+        detailUrl: `/student/${i}`
+    })
+}
+//!自定义图片、名字显示组件
+const CustomCoverCard = ({ member }) => {
+    return (
+        <div style={{ position: 'relative', width: '100%', height: 200, overflow: 'hidden' }}>
+            <img src={member.imageUrl} alt={member.name} style={{ width: '100%', height: 'auto', display: 'block' }} />
+            <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                padding: '10px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'flex-end',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                color: 'white'
+            }}>
+                <div>{member.name}</div>
+                <div style={{ marginTop: '5px' }}>{member.position}</div>
+            </div>
+        </div>
+    );
+};
+
+const TeamMember = ({member}) => {
+    return (
+        <Col span={5} key={member.id}>
+            <Link to={member.detailUrl} style={{textDecoration: 'none', color: 'inherit'}}>
+            <CustomCoverCard member={member} />
+            </Link>
+        </Col>
+    );
+};
 const TeamCard = () => {
-    //!成员列表
-    const teamMembers = [
-        {
-            name: 'Xiaowei Mao',
-            introduce: 'Professor',
-            researchDirection: 'Computational Genomics, Digital Health',
-            avatar: 'path/to/alice/avatar'
-        },
-        {
-            name: 'xiaohong1',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },
-        {
-            name: 'xiaohong2',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },
-        {
-            name: 'xiaohong3',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },
-        {
-            name: 'xiaohong4',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },
-        {
-            name: 'xiaohong5',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },
-        {
-            name: 'xiaohong6',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },
-        {
-            name: 'xiaohong7',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },
-        {
-            name: 'xiaohong8',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },{
-            name: 'xiaohong9',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },{
-            name: 'xiaohong10',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },{
-            name: 'xiaohong11',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },{
-            name: 'xiaohong12',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },{
-            name: 'xiaohong13',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },{
-            name: 'xiaohong14',
-            introduce: 'Grad Student',
-            researchDirection: 'Computational Biology',
-            avatar: 'path/to/bob/avatar'
-        },
-        // ...
-    ];
-    // !自定义标题样式
-    const customTitleStyle = {
-        fontWeight: 'bold',
-        color: '#133da7',
-        marginBottom: 20, // 增加底部间距
-    };
-    // !添加状态来追踪当前选中的成员
-    const [selectedMember, setSelectedMember] = useState(null);
-
-    const handleSelect = (e) => {
-        // !当菜单项被选中时，设置当前选中的成员
-        setSelectedMember(teamMembers.find(member => member.name === e.key));
-    };
-
     return (
         <GlobalLayout>
-            <Layout style={{margin: '20px'}}>
-                <Card
-                    style={{
-                        width: '1000px',
-                        margin: 'auto',
-                        padding: '20px', // !注意这里的padding可能会影响内部元素的高度计算
-                        borderRadius: 8,
-                        boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
-                        backgroundColor: '#fff',
-                    }}
-                >
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'stretch',
-                        width: '100%',
-                    }}>
-                        <div style={{
-                            flex: '0 0 20%',
-                            padding: '0 20px',
-                            borderRight: '1px solid #e8e8e8',
-                            overflowY: 'auto',
-                            height: 'calc(100% - 40px)', // ?可能需要根据实际情况调整这个值
-                        }}>
-                            <Menu mode="inline" selectedKeys={[selectedMember ? selectedMember.name : '']}
-                                  onSelect={handleSelect} style={{height: '100%'}}>
-                                {teamMembers.map(member => (
-                                    <Menu.Item key={member.name} icon={<UserOutlined/>}>{member.name}</Menu.Item>
-                                ))}
-                            </Menu>
-                        </div>
-                        <div style={{
-                            flex: '1',
-                            padding: '0 10px',
-                        }}>
-                            {selectedMember ? (
-                                <List
-                                    grid={{gutter: 16, column: 1}}
-                                    dataSource={[selectedMember]}
-                                    renderItem={item => (
-                                        <List.Item>
-                                            <List.Item.Meta
-                                                avatar={<Avatar src={item.avatar} size="large"/>} //!显示头像
-                                                title={<h3>{item.name}</h3>}
-                                                description={
-                                                    <>
-                                                        <p><strong>Introduce:</strong> {item.introduce}</p>
-                                                        <p><strong>Research Direction:</strong> {item.researchDirection}
-                                                        </p>
-                                                    </>
-                                                }
-                                            />
-                                        </List.Item>
-                                    )}
-                                />
-                            ) : (
-                                <p>Please select a team member from the left menu.</p>
-                            )}
-                        </div>
-                    </div>
-                </Card>
-            </Layout>
+            <Card
+                style={{
+                    width: '100%',
+                    maxWidth: '1000px', // 稍微增加宽度以适应更多内容
+                    margin: '20px auto', // 水平和垂直居中
+                    padding: '20px',
+                    borderRadius: 12, // 更大的边框半径
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.1)', // 更明显的阴影
+                    backgroundColor: '#fff',
+                    overflow: 'hidden', // 防止内容溢出
+                }}
+            >
+                <Title level={3} style={{ fontSize: 24, fontWeight: 'bold', color: '#333' }}>老师</Title>
+                <Row gutter={[24, 24]}>
+                    {teachers.map(teacher => (
+                        <TeamMember member={teacher} key={teacher.id} />
+                    ))}
+                </Row>
+                <hr style={{ marginTop: 30, marginBottom: 20 }} /> {/* 增加顶部和底部的间距 */}
+                <Title level={3} style={{ marginTop: 20, fontSize: 24, fontWeight: 'bold', color: '#333' }}>学生</Title>
+                <Row gutter={[24, 24]}>
+                    {students.map(student => (
+                        <TeamMember member={student} key={student.id} />
+                    ))}
+                </Row>
+            </Card>
         </GlobalLayout>
     );
 };
