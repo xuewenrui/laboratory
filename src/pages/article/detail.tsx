@@ -1,5 +1,5 @@
 import GlobalLayout from "@/layouts/GlobalLayout";
-import {Button, Card, Input, Layout, List, Pagination} from "antd";
+import { Card, Layout} from "antd";
 import React from "react";
 import {Outlet} from "umi";
 

@@ -6,25 +6,31 @@ import {Card, Row, Col} from 'antd';
 import {Link} from 'react-router-dom'; //使用react-router-dom进行路由管理
 import image1 from '../../assets/a.jpg'
 import image2 from '../../assets/b.jpg'
+import {useNavigate} from "@@/exports";
 //!老师信息列表
 const teachers = [
-    {id: 1, name: '毛晓伟', position: '教授', imageUrl: `${image1}`, detailUrl: `/teacher/1`},
-    {id: 2, name: '明老师', position: '教授', imageUrl: `${image1}`, detailUrl: `/teacher/2`},
-    {id: 3, name: '王老师', position: '教授', imageUrl: `${image1}`, detailUrl: `/teacher/3`},
+    {id: 1, name: '毛晓伟', position: '教授', imageUrl: `${image1}`, detailUrl: `/member/1`},
+    {id: 2, name: '明老师', position: '教授', imageUrl: `${image1}`, detailUrl: `/member/2`},
+    {id: 3, name: '王老师', position: '教授', imageUrl: `${image1}`, detailUrl: `/member/3`},
 ];
 //!学生信息列表
 const students = [
     // ... 其他学生数据
 ];
-for (let i = 1; i <= 20; i++) {
+for (let i = 4; i <= 20; i++) {
     students.push({
         id: i,
         name: '小明' + i,
         position: '学生',
         imageUrl: `${image2}`,
-        detailUrl: `/student/${i}`
+        detailUrl: `/member/${i}`
     })
 }
+/*//点击路由跳转详情页面
+let navigate = useNavigate();
+const handleMemberClick = (id) => {
+    navigate(`/member/${id}`);
+};*/
 //!自定义图片、名字显示组件
 const CustomCoverCard = ({ member }) => {
     return (

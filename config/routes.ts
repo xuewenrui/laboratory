@@ -35,11 +35,7 @@ export default [
         component: '@/pages/article/detail', // 指向文章详情页面的组件
     },
     {
-        path: '/student/:id', // 动态路由，:id 是动态参数
-        component: '@/pages/members/detail', // 指向详情页面的组件
-    },
-    {
-        path: '/teacher/:id', // 动态路由，:id 是动态参数
+        path: '/member/:id', // 动态路由，:id 是动态参数
         component: '@/pages/members/detail', // 指向详情页面的组件
     },
     {
