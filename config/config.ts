@@ -8,7 +8,7 @@ export default defineConfig({
 
         proxy: {
             '/api/': {
-                target: 'http://localhost:5000/api', // 后端服务地址
+                target: 'http://127.0.0.1:5000/api', // 后端服务地址
                 changeOrigin: true, // 是否跨域
                 pathRewrite: { '^/api': '' }, // 路径重写
             },

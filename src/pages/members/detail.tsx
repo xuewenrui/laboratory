@@ -5,7 +5,6 @@ import './MemberCard.css'
 import {BookOutlined, CodeFilled, MailOutlined, UserOutlined} from "@ant-design/icons";
 import {useParams} from "react-router";
 import axios from "axios";
-
 const {TabPane} = Tabs;
 const MemberDetail = () => {
 
@@ -30,11 +29,12 @@ const MemberDetail = () => {
         try{
             const response = await axios.get(`/api/member/getMember/${id}`)
             const data = response.data
-            console.log(response.data+'fgfgfgfg');//
             setMember(data)
         }catch (error)
         {   //TODO
             console.error('Error fetching member data:', error);
+            alert('Failed to fetch member data: ' + error.message);
+            history.back()
         }
     }
 
@@ -42,7 +42,7 @@ const MemberDetail = () => {
             fetchMembersData()
     }, [id])
 
-   /* if (!member) return <div>Loading...</div>; // 如果成员数据未加载，显示加载中 */
+    if (!member) return <div>Loading...</div>; // 如果成员数据未加载，显示加载中
     return (
         <GlobalLayout>
             <Layout.Content style={{margin: '20px'}}>
@@ -59,7 +59,7 @@ const MemberDetail = () => {
                     }}
                 >
                     <div className="member-card">
-                        <img src={'../../assets/'+member.imageUrl} alt={member.name}/>
+                        <img src={member.imageUrl} alt={member.name}/>
                         <div className="member-info">
                             <h2>
                                 <UserOutlined style={{marginRight: '8px'}}/>
@@ -89,7 +89,7 @@ const MemberDetail = () => {
                         {member.educations && member.educations.length > 0 ? (
                             <CustomTabPane tab="教育背景" key="education">
                                 {member.educations.map((p, index) => (
-                                    <p key={index} className="tab-paragraph">{p}</p>
+                                    <p key={index} className="tab-paragraph">{p.degree}</p>
                                 ))}
                             </CustomTabPane>
                         ) : null}
@@ -98,7 +98,7 @@ const MemberDetail = () => {
                         {member.workExperiences && member.workExperiences.length > 0 ? (
                             <CustomTabPane tab="工作经历" key="workExperience">
                                 {member.workExperiences.map((p, index) => (
-                                    <p key={index} className="tab-paragraph">{p}</p>
+                                    <p key={index} className="tab-paragraph">{p.description}</p>
                                 ))}
                             </CustomTabPane>
                         ) : null}
@@ -107,16 +107,16 @@ const MemberDetail = () => {
                         {member.publications && member.publications.length > 0 ? (
                             <CustomTabPane tab="发表期刊" key="publications">
                                 {member.publications.map((p, index) => (
-                                    <p key={index} className="tab-paragraph">{p}</p>
+                                    <p key={index} className="tab-paragraph">{p.page}</p>
                                 ))}
                             </CustomTabPane>
                         ) : null}
 
                         {/* 个人经历 */}
                         {member.experiences && member.experiences.length > 0 ? (
-                            <CustomTabPane tab="个人经历" key="personalExperience">
+                            <CustomTabPane tab="个人经历" key="experience">
                                 {member.experiences.map((p, index) => (
-                                    <p key={index} className="tab-paragraph">{p}</p>
+                                    <p key={index} className="tab-paragraph">{p.description}</p>
                                 ))}
                             </CustomTabPane>
                         ) : null}
