@@ -43,6 +43,10 @@ export default [
         path: "/contact",
         name: "联系我们",
     },
+    {
+        component: "@/pages/genome",
+        path: "/genomes",
+    },
     /*自定义404页面*/
     {
         path: "*",

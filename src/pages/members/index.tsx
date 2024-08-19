@@ -1,12 +1,14 @@
 import {Typography} from 'antd';
 import GlobalLayout from "@/layouts/GlobalLayout";
 const {Title} = Typography;
-import React from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {Card, Row, Col} from 'antd';
 import {Link} from 'react-router-dom'; //使用react-router-dom进行路由管理
-import image1 from '../../assets/a.jpg'
-import image2 from '../../assets/b.jpg'
-import {useNavigate} from "@@/exports";
+import axios from "axios";
+import LoadingPage from "@/components/LoadingPage";
+
+
+/*
 //!老师信息列表
 const teachers = [
     {id: 1, name: '毛晓伟', position: '教授', imageUrl: `${image1}`, detailUrl: `/member/1`},
@@ -26,11 +28,8 @@ for (let i = 4; i <= 20; i++) {
         detailUrl: `/member/${i}`
     })
 }
-/*//点击路由跳转详情页面
-let navigate = useNavigate();
-const handleMemberClick = (id) => {
-    navigate(`/member/${id}`);
-};*/
+*/
+
 //!自定义图片、名字显示组件
 const CustomCoverCard = ({ member }) => {
     return (
@@ -59,13 +58,37 @@ const CustomCoverCard = ({ member }) => {
 const TeamMember = ({member}) => {
     return (
         <Col span={5} key={member.id}>
-            <Link to={member.detailUrl} style={{textDecoration: 'none', color: 'inherit'}}>
+            <Link to={'/member/'+member.id} style={{textDecoration: 'none', color: 'inherit'}}>
             <CustomCoverCard member={member} />
             </Link>
         </Col>
     );
 };
 const TeamCard = () => {
+
+    const [members,setMembers]=useState(null)
+    const [loading, setLoading] = useState(true);//加载组件
+    async function fetchMembersData(){
+        try{
+            setLoading(true); // 开始加载前设置loading为true
+            const response = await axios.get(`/api/member/getMembers`)
+            const data = response.data
+            setMembers(data)
+            setLoading(false); // 数据加载完成后设置loading为false
+        }catch (error)
+        {   //TODO
+            console.error('Error fetching member data:', error);
+            alert('Failed to fetch member data: ' + error.message);
+            history.back()
+        }
+    }
+
+    useEffect(() => {
+        fetchMembersData()
+    }, [])
+    if (loading) return <Fragment>
+        <LoadingPage/>
+    </Fragment>; // 如果成员数据未加载，显示加载中
     return (
         <GlobalLayout>
             <Card
@@ -82,17 +105,17 @@ const TeamCard = () => {
             >
                 <Title level={3} style={{ fontSize: 24, fontWeight: 'bold', color: '#333' }}>老师</Title>
                 <Row gutter={[24, 24]}>
-                    {teachers.map(teacher => (
-                        <TeamMember member={teacher} key={teacher.id} />
+                    {members.map(member => (member.status==='0'&&
+                        <TeamMember member={member} key={member.id} />
                     ))}
-                </Row>
+                </Row> {/*member.status==='0'代表老师*/}
                 <hr style={{ marginTop: 30, marginBottom: 20 }} /> {/* 增加顶部和底部的间距 */}
                 <Title level={3} style={{ marginTop: 20, fontSize: 24, fontWeight: 'bold', color: '#333' }}>学生</Title>
                 <Row gutter={[24, 24]}>
-                    {students.map(student => (
-                        <TeamMember member={student} key={student.id} />
+                    {members.map(member=> (member.status==='1'&&
+                        <TeamMember member={member} key={member.id} />
                     ))}
-                </Row>
+                </Row>{/*member.status==='1'代表学生*/}
             </Card>
         </GlobalLayout>
     );

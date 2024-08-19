@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {Layout, Card, Tabs} from 'antd';
 import GlobalLayout from "@/layouts/GlobalLayout"; // 假设这是Ant Design的组件，您需要根据实际库调整
 import './MemberCard.css'
 import {BookOutlined, CodeFilled, MailOutlined, UserOutlined} from "@ant-design/icons";
 import {useParams} from "react-router";
 import axios from "axios";
+import LoadingPage from "@/components/LoadingPage";
 const {TabPane} = Tabs;
 const MemberDetail = () => {
 
@@ -17,7 +18,7 @@ const MemberDetail = () => {
     };
 
     //自定义tabPane
-    // 如果你想要更灵活地控制TabPane的tab，可以创建一个自定义的TabPane组件
+    // 想要更灵活地控制TabPane的tab，可自定义的TabPane组件
     const CustomTabPane = ({tab, key, children}) => (
         <TabPane tab={<span className="custom-tab-label">{tab}</span>} key={key}>
             {children}
@@ -25,7 +26,7 @@ const MemberDetail = () => {
     );
     //!利用useParams获取路由参数
     const {id}=useParams()
-    async function fetchMembersData() {
+    async function fetchMemberData() {
         try{
             const response = await axios.get(`/api/member/getMember/${id}`)
             const data = response.data
@@ -39,10 +40,11 @@ const MemberDetail = () => {
     }
 
     useEffect(() => {
-            fetchMembersData()
+            fetchMemberData()
     }, [id])
-
-    if (!member) return <div>Loading...</div>; // 如果成员数据未加载，显示加载中
+    if (!member) return <Fragment>
+        <LoadingPage/>
+    </Fragment>; // 如果成员数据未加载，显示加载中
     return (
         <GlobalLayout>
             <Layout.Content style={{margin: '20px'}}>
