@@ -102,7 +102,6 @@ function BasicLayout({children}) {
                         <Search
                             placeholder="请输入搜索内容"
                             allowClear
-                            enterButton="Search"
                             size="large"
                             onSearch={onSearch}
                         />
