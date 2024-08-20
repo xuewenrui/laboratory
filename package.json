@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "author": "'袁瑞' <'2502099390@qq.com'>",
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi setup",
+    "setup": "umi setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "@umijs/max": "^4.3.12",
+    "axios": "^1.7.4",
+    "lodash": "^4.17.21",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1",
+    "umi": "^4.3.12"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "typescript": "^5.0.3"
+  }
+}
