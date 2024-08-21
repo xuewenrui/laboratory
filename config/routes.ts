@@ -8,7 +8,6 @@ export default [
         component: "@/pages/about",
         path: "/about",
         name: "关于我们",
-        //layout:'@/layouts/GlobalLayout',
     },
     {
         path: "/publications",

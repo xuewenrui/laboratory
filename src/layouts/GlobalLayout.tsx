@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Layout, Menu} from 'antd';
-import {Link} from 'umi'; // 确保这是 Umi.js 的 Link 组件
+import {Link} from 'umi';
 import logo2 from '../assets/lab_logo.png';
 import logo1 from '../assets/dzkd.jpg';
 import 'antd/dist/antd.css';

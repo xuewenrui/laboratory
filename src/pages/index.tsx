@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Carousel, Layout} from 'antd';
+import {Card, Carousel} from 'antd';
 import GlobalLayout from "@/layouts/GlobalLayout"; //
 import image1 from '../assets/lab_logo.png'
 import image2 from '../assets/lab_log.png'
