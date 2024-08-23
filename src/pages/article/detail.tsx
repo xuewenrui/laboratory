@@ -16,6 +16,7 @@ const Article = () => {
                    backgroundColor: '#fff',
                    overflow: 'hidden', // 防止内容溢出
                }}>
+
                    Digital Life and Intelligent Health Laboratory
                </Card>
            </Layout>

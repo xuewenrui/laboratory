@@ -1,19 +1,27 @@
 export default [
     {
-        path: "/",
-        component: "./index",
+      path:'/',
+      redirect: '/home'
+    },
+    {
+        path: "/home",
+        component: "./index.tsx",
         name: '首页'
     },
     {
-        component: "@/pages/about",
+        redirect: '/about/introduction',
         path: "/about",
-        name: "关于我们",
+        name: "实验室概述",
     },
     {
-        path: "/publications",
-        component: "@/pages/publications",
-        name: "出版"
-    },
+        path: '/about/introduction',
+        component: '@/pages/about/introduction'},
+    {
+        path: '/about/facilities',
+        component: '@/pages/about/facilities'},
+    {
+        path: '/about/add',
+        component: '@/pages/about/add'},
     {
         path: "/members",
         component: "@/pages/members",
@@ -21,14 +29,29 @@ export default [
     },
     {
         path: "/projects",
-        component: "@/pages/projects",
-        name: "科研项目"
+        redirect: "/projects/direction",
+        name: "科学研究",
     },
     {
+        path: '/projects/direction',
+        component: '@/pages/projects/direction'},
+    {
+        path: '/projects/project',
+        component: '@/pages/projects/project'},
+    {
+        path: '/projects/achievement',
+        component: '@/pages/projects/achievement'},
+    {
         path: '/articles',
-        component: '@/pages/article', // 指向文章页面的组件
-        name:'文章阅览'
+        redirect: '/articles/paper', // 指向文章页面的组件
+        name: '论文专利',
     },
+    {
+        path: '/articles/paper',
+        component: '@/pages/article/paper'},
+    {
+        path: '/articles/patent',
+        component: '@/pages/article/patent'},
     {
         path: '/article/:id', // 动态路由，:id 是动态参数
         component: '@/pages/article/detail', // 指向文章详情页面的组件
@@ -41,6 +64,11 @@ export default [
         component: "@/pages/contact",
         path: "/contact",
         name: "联系我们",
+    },
+    {
+        component: "@/pages/test",
+        path: "/test",
+        name: "仅供测试",
     },
     {
         component: "@/pages/genome",

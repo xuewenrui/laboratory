@@ -1,0 +1,16 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+    .ant-layout-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .ant-menu-horizontal {
+        flex-wrap: wrap;
+    }
+    .ant-layout-content {
+        padding: 10px;
+    }
+}

@@ -1,44 +1,56 @@
 import React from 'react';
-import {Card, Carousel} from 'antd';
-import GlobalLayout from "@/layouts/GlobalLayout"; //
-import image1 from '../assets/lab_logo.png'
-import image2 from '../assets/lab_log.png'
-
-function Index() {
-    // 假设这里有一些轮播图的数据
-    const imgList = [
-        image1,
-        image2,
-        image1,
+import { Carousel } from 'antd';
+import 'antd/dist/antd.css'; // 引入Ant Design样式
+import GlobalLayout from "@/layouts/GlobalLayout";
+import carousel01 from '@/assets/carousel01.jpg'
+import carousel02 from '@/assets/carousel02.jpg'
+import carousel03 from '@/assets/carousel03.jpg'
+import carousel04 from '@/assets/carousel04.jpg'
+function CarouselComponent() {
+    // 轮播图数据和说明
+    const slides = [
+        {
+            key: '1',
+            src: `${carousel01}`,
+            alt: 'Image 1',
+            description: 'This is the first slide'
+        },
+        {
+            key: '2',
+            src:`${carousel02}`,
+            alt: 'Image 2',
+            description: 'This is the second slide'
+        },
+        {
+            key: '3',
+            src:`${carousel03}`,
+            alt: 'Image 3',
+            description: 'This is the three slide'
+        },
+        {
+            key: '4',
+            src:`${carousel04}`,
+            alt: 'Image 4',
+            description: 'This is the four slide'
+        },
     ];
-    const carouselStyle = {
-        marginTop: '20px', // 举例：给轮播图添加一些上边距
-    };
 
     return (
         <GlobalLayout>
-            <Card
-                style={{
-                    width: '100%',
-                    maxWidth: '1000px', // 稍微增加宽度以适应更多内容
-                    margin: '20px auto', // 水平和垂直居中
-                    padding: '20px',
-                    borderRadius: 12, // 更大的边框半径
-                    boxShadow: '0 4px 16px rgba(0,0,0,0.1)', // 更明显的阴影
-                    backgroundColor: '#fff',
-                    overflow: 'hidden', // 防止内容溢出
-                }}
-            >
-                <Carousel autoplay style={carouselStyle}>
-                    {imgList.map((img, index) => (
-                        <Carousel key={index}>
-                            <img src={img} alt={`banner ${index + 1}`} style={{ width: '100%', display: 'block', height: '400px', objectFit: 'cover' }}/>
-                        </Carousel>
+            <div style={{ width: '100%', position: 'relative' }}>
+                <Carousel autoplay dots={true} arrows={true} style={{ width: '100%', height: '500px' }}>
+                    {slides.map(slide => (
+                        <div key={slide.key}>
+                            <img src={slide.src} alt={slide.alt} style={{ width: '100%', height: '500px', display: 'block' }} />
+                            <div style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)', color: 'white', backgroundColor: 'rgba(0,0,0,0.5)', padding: '5px 10px', borderRadius: '5px' }}>
+                                {slide.description}
+                            </div>
+                        </div>
                     ))}
                 </Carousel>
-            </Card>
+            </div>
         </GlobalLayout>
     );
 }
 
-export default Index;
+export default CarouselComponent;

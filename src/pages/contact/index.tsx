@@ -1,15 +1,20 @@
 import GlobalLayout from "@/layouts/GlobalLayout";
 import {Card, Layout} from "antd";
+import ContentLayout from "@/components/ContentLayout";
+import BackgroundImage from "@/components/BackgroundImage";
 
 function Index() {
 
     return (
 
         <GlobalLayout>
-            <Layout style={{margin: '20px'}}>
-                <Card style={{width: 1000, margin: 'auto'}}>
-                    关于我们  {/*待定*/}
-                </Card>
+            <Layout>
+                <BackgroundImage/>
+                <div style={{width: 1200, margin: 'auto',height:1000}}>
+                    <ContentLayout>
+                        关于我们
+                    </ContentLayout>
+                </div>
             </Layout>
         </GlobalLayout>
     )
