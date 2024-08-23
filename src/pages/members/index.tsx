@@ -1,4 +1,4 @@
-import {Typography} from 'antd';
+import {Layout, Typography} from 'antd';
 import GlobalLayout from "@/layouts/GlobalLayout";
 
 const {Title} = Typography;
@@ -7,18 +7,10 @@ import {Card, Row, Col} from 'antd';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 import LoadingPage from "@/components/LoadingPage";
+import BackgroundImage from "@/components/BackgroundImage";
+import ContentLayout from "@/components/ContentLayout";
 
 const customStyles = {
-    cardContainer: {
-        width: '100%',
-        maxWidth: '1000px',
-        margin: '20px auto',
-        padding: '20px',
-        borderRadius: 12,
-        boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
-        backgroundColor: '#fff',
-        overflow: 'hidden',
-    },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
@@ -76,7 +68,7 @@ const CustomCoverCard = ({member}) => {
 const TeamMember = ({member}) => {
     return (
         <Col span={5} key={member.id}>
-            <Link to={'/member/' + member.id} style={{textDecoration: 'none', color: 'inherit'}}>
+            <Link to={'/member/detail/' + member.id} style={{textDecoration: 'none', color: 'inherit'}}>
                 <div style={customStyles.memberCard}>
                     <CustomCoverCard member={member}/>
                 </div>
@@ -110,34 +102,42 @@ const TeamCard = () => {
     if (loading) return <Fragment><LoadingPage/></Fragment>;
 
     return (
+
         <GlobalLayout>
-            <Card style={customStyles.cardContainer}>
-                <Title style={customStyles.title}>老师</Title>
-                <Row gutter={[24, 24]}>
-                    {members.map(member => (member.status === '0' && <TeamMember member={member} key={member.id}/>))}
-                </Row>
-                <hr style={customStyles.hr}/>
-                <Title style={customStyles.title}>博士后</Title>
-                <Row gutter={[24, 24]}>
-                    {members.map(member => (member.status === '1' && <TeamMember member={member} key={member.id}/>))}
-                </Row>
-                <hr style={customStyles.hr}/>
-                <Title style={customStyles.title}>博士</Title>
-                <Row gutter={[24, 24]}>
-                    {members.map(member => (member.status === '2' && <TeamMember member={member} key={member.id}/>))}
-                </Row>
-                <hr style={customStyles.hr}/>
-                <Title style={customStyles.title}>硕士生</Title>
-                <Row gutter={[24, 24]}>
-                    {members.map(member => (member.status === '3' && <TeamMember member={member} key={member.id}/>))}
-                </Row>
-                <hr style={customStyles.hr}/>
-                <Title style={customStyles.title}>科研助理</Title>
-                <Row gutter={[24, 24]}>
-                    {members.map(member => (member.status === '4' && <TeamMember member={member} key={member.id}/>))}
-                </Row>
-                <hr style={customStyles.hr}/>
-            </Card>
+            <Layout>
+                <BackgroundImage/>
+                <div style={{width: 1200, margin: 'auto'}}>
+                    <ContentLayout>
+                        <Card style={customStyles.cardContainer}>
+                            <Title style={customStyles.title}>老师</Title>
+                            <Row gutter={[24, 24]}>
+                                {members.map(member => (member.status === '0' && <TeamMember member={member} key={member.id}/>))}
+                            </Row>
+                            <hr style={customStyles.hr}/>
+                            <Title style={customStyles.title}>博士后</Title>
+                            <Row gutter={[24, 24]}>
+                                {members.map(member => (member.status === '1' && <TeamMember member={member} key={member.id}/>))}
+                            </Row>
+                            <hr style={customStyles.hr}/>
+                            <Title style={customStyles.title}>博士</Title>
+                            <Row gutter={[24, 24]}>
+                                {members.map(member => (member.status === '2' && <TeamMember member={member} key={member.id}/>))}
+                            </Row>
+                            <hr style={customStyles.hr}/>
+                            <Title style={customStyles.title}>硕士生</Title>
+                            <Row gutter={[24, 24]}>
+                                {members.map(member => (member.status === '3' && <TeamMember member={member} key={member.id}/>))}
+                            </Row>
+                            <hr style={customStyles.hr}/>
+                            <Title style={customStyles.title}>科研助理</Title>
+                            <Row gutter={[24, 24]}>
+                                {members.map(member => (member.status === '4' && <TeamMember member={member} key={member.id}/>))}
+                            </Row>
+                            <hr style={customStyles.hr}/>
+                        </Card>
+                    </ContentLayout>
+                </div>
+            </Layout>
         </GlobalLayout>
     );
 };

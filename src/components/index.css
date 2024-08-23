@@ -1,0 +1,20 @@
+/* App.css 或其他CSS文件 */
+.link-item {
+    cursor: pointer;
+    padding: 10px 5px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 10px; /* 竖直间隔 */
+    border-bottom: 1px solid #ddd; /* 默认底部边框 */
+    display: block; /* 竖直排列 */
+}
+
+.link-item:hover {
+    background-color: #f0f0f0; /* 悬浮背景色 */
+}
+
+.link-item.selected {
+    background-color: #e0e0e0; /* 选中背景色 */
+    font-weight: bold; /* 选中字体加粗 */
+    border-bottom: none; /* 选中时移除底部边框 */
+}

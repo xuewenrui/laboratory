@@ -23,7 +23,7 @@ export default [
         path: '/about/add',
         component: '@/pages/about/add'},
     {
-        path: "/members",
+        path: "/member",
         component: "@/pages/members",
         name: "团队成员"
     },
@@ -57,7 +57,7 @@ export default [
         component: '@/pages/article/detail', // 指向文章详情页面的组件
     },
     {
-        path: '/member/:id', // 动态路由，:id 是动态参数
+        path: '/member/detail/:id', // 动态路由，:id 是动态参数
         component: '@/pages/members/detail', // 指向详情页面的组件
     },
     {

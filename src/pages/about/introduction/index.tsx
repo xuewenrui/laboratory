@@ -2,6 +2,7 @@ import React from 'react';
 import {Layout, Typography, Divider, Card} from 'antd';
 import GlobalLayout from "@/layouts/GlobalLayout";
 import BackgroundImage from "@/components/BackgroundImage";
+import ContentLayout from "@/components/ContentLayout";
 
 const {Title, Paragraph} = Typography;
 
@@ -24,20 +25,11 @@ function Index() {
         marginBottom: 20, // 增加底部间距
     };
     return (
-
         <GlobalLayout>
-            <BackgroundImage/>
-            <Layout style={{margin: '20px'}}>
-                <Card  style={{
-                    width: '100%',
-                    maxWidth: '1000px', // 稍微增加宽度以适应更多内容
-                    margin: '20px auto', // 水平和垂直居中
-                    padding: '20px',
-                    borderRadius: 12, // 更大的边框半径
-                    boxShadow: '0 4px 16px rgba(0,0,0,0.1)', // 更明显的阴影
-                    backgroundColor: '#fff',
-                    overflow: 'hidden', // 防止内容溢出
-                }}>
+            <Layout>
+                <BackgroundImage/>
+                <div style={{width: 1200, margin: 'auto'}}>
+                    <ContentLayout>
                         <Title level={3} style={customTitleStyle}>实验室介绍</Title>
                         <div style={customParagraphContainerStyle}>
                             <Paragraph style={customParagraphStyle}>
@@ -74,11 +66,10 @@ function Index() {
                                 2、请者须提交个人详细简历（PDF），简历应包括主要学习与工作经历、研究背景经历、发表论文、获奖情况及其他能体现申请者科研潜力的相关材料；邮件主题请标注为“博士研究生申请+姓名+研究方向“
                             </Paragraph>
                         </div>
-                </Card>
+                    </ContentLayout>
+                </div>
             </Layout>
         </GlobalLayout>
-
-
     );
 }
 

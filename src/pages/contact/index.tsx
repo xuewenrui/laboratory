@@ -10,7 +10,7 @@ function Index() {
         <GlobalLayout>
             <Layout>
                 <BackgroundImage/>
-                <div style={{width: 1200, margin: 'auto',height:1000}}>
+                <div style={{width: 1200, margin: 'auto'}}>
                     <ContentLayout>
                         关于我们
                     </ContentLayout>

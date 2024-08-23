@@ -19,13 +19,13 @@ function GlobalLayout({children}) {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        height: '120px', // 增加头部高度
+        height: '100px', // 增加头部高度
         //backgroundImage: `url(${backgroundImage})`, // 添加背景图片
 
     };
     // !设置logo的样式，包括增加高度
     const logoStyle = {
-        height: '100px', // 增加logo的高度
+        height: '80px', // 增加logo的高度
         width: 'auto', // 保持logo的宽高比
     };
 
@@ -48,7 +48,7 @@ function GlobalLayout({children}) {
                 {key: '/about/add', label: '加入我们'},
             ]
         },
-        {key: '/members', label: '实验室成员', children: []},
+        {key: '/member', label: '实验室成员', children: []},
         {
             key: '/projects', label: '科学研究',
             children: [
@@ -68,16 +68,6 @@ function GlobalLayout({children}) {
     ]
     //!搜索函数
     const onSearch = (value: string) => console.log(value);
-  /*  const [selectedKey, setSelectedKey] = useState('/');
-    //!设置导航栏选中
-    const location = useLocation();
-    useEffect(() => {
-        // !根据当前路由设置selectedKey
-        const pathArray = location.pathname
-        const lastPath = pathArray || '/';
-        console.log(lastPath);
-        setSelectedKey(lastPath);
-    }, [location.pathname]);*/
     //!设置导航栏选中
     const [selectedPath, setSelectedPath] = useState('/');
     const location = useLocation();

@@ -1,5 +1,6 @@
 import React from "react";
-import  backgroundImage from '../assets/bg.jpg'
+import backgroundImage from '../assets/bg.jpg'
+
 function BackgroundImage() {
     return (
         <div style={{
@@ -8,9 +9,7 @@ function BackgroundImage() {
             backgroundPosition: 'center', // 图片居中
             height: '200px', // 高度设置为150px
             width: '100%', // 宽度设置为100%
-            // 如果需要，还可以添加其他样式，如padding, margin等
         }}>
-            {/* 这里可以添加更多的内容，比如文本、图片等，它们将显示在背景图片之上 */}
         </div>
     );
 }
