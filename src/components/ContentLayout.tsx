@@ -103,8 +103,8 @@ const ContentLayout = ({children}) => {
                             {selectedItem.label}
                         </Link>
                         {/*!渲染正文*/}
-                        {selectedItem.level !== null && location.pathname != selectedItem.key && (
-                            <div>>><span style={{color: '#0b6bb7'}}>正文</span></div>)}
+                        {selectedItem.level != '' && selectedKey != selectedItem.key && (
+                            <div>{'>>'}<span style={{color: '#0b6bb7'}}>正文</span></div>)}
                         {selectedItem.children && selectedItem.children.length > 0 && (
                             <Link
                                 to={selectedKey}
@@ -138,17 +138,17 @@ const ContentLayout = ({children}) => {
                     {/* 是一个特殊的菜单项*/}
                     <div key={selectedItem.key + '/'} style={{
                         backgroundColor: '#274171',
-                        height: '50px',
+                        height: '60px',
                         color: '#fdfdfd',
                         textAlign: 'center',
-                        lineHeight: '50px',
-                        fontSize: '20px',
+                        lineHeight: '60px',
+                        fontSize: '22px',
                         fontWeight: 'bold'
                     }}>
                         <span>{selectedItem.label}</span>
                     </div>
                     {/* 常规菜单项 */}
-                    <div style={{minHeight: 150, border: '1px solid #fdfdfd'}}>
+                    <div style={{minHeight: 180, border: '3px solid #fdfdfd'}}>
                         {selectedItem.children && selectedItem.children.length > 0 && selectedItem.children.map(item => (
                             <Link
                                 to={item.key}

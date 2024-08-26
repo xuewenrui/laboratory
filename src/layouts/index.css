@@ -8,7 +8,6 @@
     margin: 0;
     background-color: #274171;
 }
-
 .navbar-item {
     position: relative;
     display: inline-block;
@@ -21,10 +20,6 @@
     color: white;
     font-size: 16px;
     text-decoration: none;
-}
-
-.navbar-link:hover {
-    /* 不再改变背景颜色 */
 }
 
 /* 选中状态的横线 */
@@ -41,16 +36,17 @@
 .submenu-item:hover {
     background-color: #0b6bb7;
 }
-
 /* 子菜单样式 */
 .submenu {
     display: none;
     position: absolute;
     left: 0; /* 确保子菜单从父菜单的左侧开始 */
     top: 100%; /* 从父菜单的底部开始 */
-    background-color: #f9f9f9;
-    min-width: 100%; /* 使用100%来使子菜单与父菜单宽度相同 */
+    background-color: #274171;
+    /* 你可以设置一个固定的宽度，或者根据内容自动调整宽度 */
+    min-width: 100%; /* 尝试使用100%来使子菜单与父菜单宽度相同 */
     /* 如果不希望子菜单宽度完全与父菜单相同，可以使用固定宽度或max-width */
+    /* max-width: 200px; */ /* 例如，限制最大宽度为200px */
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     list-style: none; /* 移除列表样式 */
@@ -69,3 +65,4 @@
 .navbar-item:hover .submenu {
     display: block;
 }
+

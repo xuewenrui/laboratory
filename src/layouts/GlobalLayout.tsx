@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Layout} from 'antd';
 import {Link} from 'umi';
-import logo2 from '../assets/lab_logo.png';
-import logo1 from '../assets/dzkd.jpg';
+import logo1 from '../assets/dzkd_logo.png';
+import logo2 from '../assets/bg-hero.png';
 import 'antd/dist/antd.css';
 import './index.css'
 import Search from "antd/es/input/Search";
@@ -12,29 +12,15 @@ const {Header, Content, Footer} = Layout;
 
 function GlobalLayout({children}) {
 
-    // !设置Header的背景色和padding来增加高度
-    const headerStyle = {
-        backgroundColor: '#274272',
-        padding: '0 100px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        height: '100px', // 增加头部高度
-        //backgroundImage: `url(${backgroundImage})`, // 添加背景图片
-
-    };
-    // !设置logo的样式，包括增加高度
-    const logoStyle = {
-        height: '80px', // 增加logo的高度
-        width: 'auto', // 保持logo的宽高比
-    };
-
     const footerStyle = {
         bottom: 0,
         width: '100%',
         background: 'black',
         color: 'white',
         textAlign: 'center',
+        minHeight:'250px',
+        lineHeight:'200px',
+        backgroundImage: `url(${logo2})`,
     }
     //!导航栏项列表
     const menuItems = [
@@ -74,14 +60,12 @@ function GlobalLayout({children}) {
 
     useEffect(() => {
         setSelectedPath(location.pathname);
-    }, [location.pathname]);
+    }, [location]);
 
     const isActive = (path) => {
-        // 检查当前路径是否以给定的菜单项路径开始
-        return location.pathname.startsWith(path);
+        return selectedPath.startsWith(path);
     };
     const NavMenu = () => {
-
         return (
             <nav className="navbar">
                 <ul>
@@ -99,7 +83,7 @@ function GlobalLayout({children}) {
                                         <li key={child.key} className="submenu-item">
                                             <Link
                                                 to={child.key}
-                                                className={`submenu-link ${isActive(item.key) ? 'menuItemSelected' : ''}`} // 注意这里使用父菜单的key
+                                                className="submenu-link"
                                             >
                                                 {child.label}
                                             </Link>
@@ -112,28 +96,57 @@ function GlobalLayout({children}) {
                 </ul>
             </nav>
         );
-    }
-
+    };
 
     return (
         <Layout style={{minHeight: '100vh'}}>
-            <Header style={headerStyle}>
-                <div style={{flex: '0 0 auto', marginRight: 20}}>
-                    {/* <img src={logo1} alt="Logo" style={logoStyle}/>
-                    <img src={logo2} alt="Logo" style={logoStyle}/>*/}
+            <Header style={{
+                display: 'flex',
+                alignItems: 'center', // 垂直居中
+                backgroundColor: '#fdfdfd',
+                color: 'white', // 注意：这里设置的color只会影响Header内部的直接文本子元素（实际上，它不会影响任何子元素，因为color不继承）
+                position: 'relative', // 如果需要的话，设置Header的位置
+                width: '100%', // 确保Header宽度为100%
+                height: '138px',
+                padding: '0 20px' // 添加一些内边距以避免内容与边缘过于接近
+            }}>
+                <div style={{
+                    marginRight: 'auto', // 将logo推向左侧，并允许右侧内容（如果有的话）填充剩余空间
+                    marginLeft: '40px' // 给logo左侧添加间距
+                }}>
+                    <img src={logo1} alt="Logo" style={{
+                        height: '100px',
+                        width: 'auto', marginRight: '20px'
+                    }}/>
                 </div>
-                <div style={{flex: '1 1 auto', display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
-                    <div style={{marginLeft: 20}}>
-                        <Search
-                            placeholder="请输入搜索内容"
-                            allowClear
-                            size="large"
-                            onSearch={onSearch}
-                        />
-                    </div>
+                <div style={{
+                    textAlign: 'center', // 文本水平居中
+                    fontSize: '35px',
+                    fontWeight: 'bold',
+                    color: '#0b4088', // 明确设置文本颜色为白色
+                    flex: '0 0 auto', // 防止flex项目增长或缩小
+                    marginLeft: '280', // 将文本div推向中间（与marginRight: 'auto'在logo的div上类似，但这里是为了居中）
+                    marginRight: 'auto', // 与marginLeft相同，用于确保居中
+                    lineHeight:'45px'
+                }}>
+                    <span>数基生命与智能健康实验室</span>
+                    <br/> {/* 如果需要，可以在中英文之间添加换行 */}
+                    <span style={{fontSize: '20px'}}>Digital Life and Intelligent Health Laboratory</span>
+                </div>
+                <div style={{
+                    marginLeft: 'auto', // 将搜索框推向右侧
+                    marginRight: '30px' // 给搜索框右侧添加间距
+                }}>
+                    <Search
+                        placeholder="请输入搜索内容"
+                        allowClear
+                        size="large"
+                        onSearch={onSearch}
+                    />
                 </div>
             </Header>
-            {/* 将NavMenu组件放在Header下方 */}
+            {/* 将NavMenu组件放在Header下方 */
+            }
             <NavMenu/>
             <Content>
                 {children}
@@ -145,7 +158,8 @@ function GlobalLayout({children}) {
                 </div>
             </Footer>
         </Layout>
-    );
+    )
+        ;
 }
 
 export default GlobalLayout;
