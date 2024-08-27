@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Menu, Image } from 'antd';
 import 'antd/dist/antd.css';
-import image from '../../assets/lab_log.png'
+import image from '../../assets/jcqy.png'
 const { Header, Content, Footer } = Layout;
 
 const ResponsiveLayout = () => {

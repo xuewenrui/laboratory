@@ -1,42 +1,82 @@
+
 /* MemberCard.css */
+
 .member-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px;
+    margin: 10px;
+    background-color: #f8f9fa; /* 浅灰色背景增加可读性 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 轻微的阴影效果 */
 }
 
 .member-card img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    object-fit: cover; /* 确保图片完整覆盖 */
+}
+
+.member-info {
+    flex: 1; /* 使信息部分占据剩余空间 */
+    margin-left: 20px;
 }
 
 .member-info h2 {
-    font-size: 24px; /* 或者使用Ant Design的Typography组件来控制标题大小 */
-    margin-bottom: 8px;
+    font-size: 24px;
+    color: #333; /* 深色标题 */
+    margin-bottom: 10px;
 }
 
 .member-info p {
-    margin: 4px 0;
+    font-size: 16px;
+    color: #666; /* 灰色文本增加可读性 */
+    line-height: 1.5;
 }
 
 .member-info .ant-icon {
-    margin-right: 10px; /* 对于较小的图标，如MailOutlined，可能需要调整间距 */
+    margin-right: 8px;
+    color: #1890ff; /* Ant Design蓝色图标 */
 }
-.member-info span{
+
+.member-info span {
+    font-weight: bold;
+    color: #333; /* 深色加粗 */
+}
+
+/* Tabs样式 */
+.ant-tabs-tab {
+    font-size: 16px;
+    color: #666; /* 灰色标签 */
+}
+
+.ant-tabs-tab-active {
+    color: #1890ff; /* 激活的标签使用Ant Design蓝色 */
     font-weight: bold;
 }
 
-/*tabpane字体*/
-.custom-tab-label {
-    font-size: 16px; /* 调整字体大小以减少拥挤感 */
-    color: #333; /* 设置字体颜色 */
-    /* 可以添加更多样式，如字体权重、文本对齐等 */
-}
-/*p标签样式*/
 .tab-paragraph {
-    font-size: 16px; /* 自定义段落字体大小 */
-    line-height: 1.6; /* 自定义行高来控制间距 */
-    color: #666; /* 自定义文本颜色 */
+    font-size: 16px; /* 稍微减小段落字体大小 */
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 10px; /* 增加段落间的间距 */
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .member-card {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .member-card img {
+        margin-bottom: 20px;
+    }
+
+    .member-info {
+        margin-left: 0;
+    }
 }

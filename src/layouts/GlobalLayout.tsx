@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Layout} from 'antd';
+import {Layout, message} from 'antd';
 import {Link} from 'umi';
 import logo1 from '../assets/dzkd_logo.png';
 import logo2 from '../assets/bg-hero.png';
@@ -7,19 +7,22 @@ import 'antd/dist/antd.css';
 import './index.css'
 import Search from "antd/es/input/Search";
 import {useLocation} from "react-router";
+import {useNavigate} from "@@/exports";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
+
 
 const {Header, Content, Footer} = Layout;
 
 function GlobalLayout({children}) {
-
+    const navigate = useNavigate();
     const footerStyle = {
         bottom: 0,
         width: '100%',
-        background: 'black',
+        background: '#274171',
         color: 'white',
         textAlign: 'center',
-        minHeight:'250px',
-        lineHeight:'200px',
+        minHeight: '250px',
+        lineHeight: '180px',
         backgroundImage: `url(${logo2})`,
     }
     //!导航栏项列表
@@ -50,10 +53,27 @@ function GlobalLayout({children}) {
                 {key: '/articles/patent', label: '专利'},
             ]
         },
-        {key: '/contact', label: '联系我们', children: []},
+        {
+            key: '/message', label: '信息中心', children: [
+                {key: '/message/new', label: '新闻动态'},
+                {key: '/message/notice', label: '通知公告'}
+            ]
+        },
+        {
+            key: '/contact', label: '联系我们',
+            children: []
+        }
+
     ]
     //!搜索函数
-    const onSearch = (value: string) => console.log(value);
+    const onSearch = (keyWord: string) => {
+        if (keyWord == null || keyWord.trim() === '') {
+            message.warning('请输入搜索内容！')
+            return;
+        }
+        navigate('/result')
+
+    }
     //!设置导航栏选中
     const [selectedPath, setSelectedPath] = useState('/');
     const location = useLocation();
@@ -99,12 +119,12 @@ function GlobalLayout({children}) {
     };
 
     return (
-        <Layout style={{minHeight: '100vh'}}>
+        <Layout style={{minHeight: '100vh',backgroundColor:'#fff'}}>
             <Header style={{
                 display: 'flex',
                 alignItems: 'center', // 垂直居中
                 backgroundColor: '#fdfdfd',
-                color: 'white', // 注意：这里设置的color只会影响Header内部的直接文本子元素（实际上，它不会影响任何子元素，因为color不继承）
+                color: 'white', //
                 position: 'relative', // 如果需要的话，设置Header的位置
                 width: '100%', // 确保Header宽度为100%
                 height: '138px',
@@ -123,11 +143,11 @@ function GlobalLayout({children}) {
                     textAlign: 'center', // 文本水平居中
                     fontSize: '35px',
                     fontWeight: 'bold',
-                    color: '#0b4088', // 明确设置文本颜色为白色
+                    color: '#0b4088',
                     flex: '0 0 auto', // 防止flex项目增长或缩小
                     marginLeft: '280', // 将文本div推向中间（与marginRight: 'auto'在logo的div上类似，但这里是为了居中）
                     marginRight: 'auto', // 与marginLeft相同，用于确保居中
-                    lineHeight:'45px'
+                    lineHeight: '45px'
                 }}>
                     <span>数基生命与智能健康实验室</span>
                     <br/> {/* 如果需要，可以在中英文之间添加换行 */}
@@ -153,13 +173,13 @@ function GlobalLayout({children}) {
             </Content>
             <Footer style={footerStyle}>
                 <div style={{textAlign: 'center'}}>
-                    © {new Date().getFullYear()}, 电子科技大学 | 数基生命与智能健康实验室
+                    © {/*{new Date().getFullYear()}*/}2024, 电子科技大学 | 数基生命与智能健康实验室
                     {/* 可以添加社交图标或链接 */}
                 </div>
             </Footer>
+            <ScrollToTopButton/>
         </Layout>
-    )
-        ;
+    );
 }
 
 export default GlobalLayout;

@@ -1,7 +1,7 @@
 export default [
     {
-      path:'/',
-      redirect: '/home'
+        path: '/',
+        redirect: '/home'
     },
     {
         path: "/home",
@@ -15,13 +15,16 @@ export default [
     },
     {
         path: '/about/introduction',
-        component: '@/pages/about/introduction'},
+        component: '@/pages/about/introduction'
+    },
     {
         path: '/about/facilities',
-        component: '@/pages/about/facilities'},
+        component: '@/pages/about/facilities'
+    },
     {
         path: '/about/add',
-        component: '@/pages/about/add'},
+        component: '@/pages/about/add'
+    },
     {
         path: "/member",
         component: "@/pages/members",
@@ -34,13 +37,20 @@ export default [
     },
     {
         path: '/projects/direction',
-        component: '@/pages/projects/direction'},
+        component: '@/pages/projects/direction'
+    },
     {
         path: '/projects/project',
-        component: '@/pages/projects/project'},
+        component: '@/pages/projects/project'
+    },
     {
         path: '/projects/achievement',
-        component: '@/pages/projects/achievement'},
+        component: '@/pages/projects/achievement'
+    },
+    {
+        path: '/projects/achievement/detail/:id', // 动态路由，:id 是动态参数
+        component: '@/pages/projects/achievementDetail', // 指向成就详情的组件
+    },
     {
         path: '/articles',
         redirect: '/articles/paper', // 指向文章页面的组件
@@ -48,10 +58,12 @@ export default [
     },
     {
         path: '/articles/paper',
-        component: '@/pages/article/paper'},
+        component: '@/pages/article/paper'
+    },
     {
         path: '/articles/patent',
-        component: '@/pages/article/patent'},
+        component: '@/pages/article/patent'
+    },
     {
         path: '/article/:id', // 动态路由，:id 是动态参数
         component: '@/pages/article/detail', // 指向文章详情页面的组件
@@ -73,6 +85,24 @@ export default [
     {
         component: "@/pages/genome",
         path: "/genomes",
+    },
+    /*搜索结果页面*/
+    {
+        component: "@/pages/result",
+        path: '/result'
+    },
+    /*信息中心*/
+    {
+        path: '/message',
+        redirect: '/message/new',
+    },
+    {
+        path: '/message/new',
+        component: '@/pages/message/new'
+    },
+    {
+        path: '/message/notice',
+        component: '@/pages/message/notice'
     },
     /*自定义404页面*/
     {

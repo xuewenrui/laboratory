@@ -53,12 +53,12 @@ const MemberDetail = () => {
                 <BackgroundImage/>
                 <div style={{width: 1200, margin: 'auto'}}>
                     <ContentLayout>
-                        <Layout.Content style={{margin: '5px'}}>
+                        <Layout.Content >
                             <Card
                                 style={{
                                     width: '100%',
                                     margin: 'auto',
-                                    padding: '20px',
+                                    padding: '10px',
                                     borderRadius: 12,
                                     boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
                                     backgroundColor: '#fff',

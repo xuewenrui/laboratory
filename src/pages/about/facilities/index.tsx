@@ -31,7 +31,7 @@ const Index = () => {
                 <BackgroundImage/>
                 <div style={{width: 1200, margin: 'auto'}}>
                     <ContentLayout>
-                        <Title level={3} style={customTitleStyle}>实验室介绍</Title>
+                        <Title level={3} style={customTitleStyle}>设备设施</Title>
                         <div style={customParagraphContainerStyle}>
                             <Paragraph style={customParagraphStyle}>
                                 数基生命与智能健康实验室位于电子科技大学基础与前沿研究院，

@@ -2,12 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {useLocation} from "react-router";
 import LoadingPage from "@/components/LoadingPage";
 import {Link} from "react-router-dom";
-import {Card, Divider, Typography} from 'antd';
+import {Card, Divider} from 'antd';
 import 'antd/dist/antd.css';
 import {HomeOutlined} from "@ant-design/icons";
 import './index.css'
 
-const {Title} = Typography;
 const menuItems = [
     {
         key: '/about',
@@ -27,7 +26,7 @@ const menuItems = [
         children: [
             {key: '/projects/direction', label: '研究方向'},
             {key: '/projects/project', label: '科研项目'},
-            {key: '/projects/achievement', label: '研究成果'},
+            {key: '/projects/achievement', label: '研究成果', level: '/projects/achievement/detail'},
         ],
         level: ''
     },
@@ -43,6 +42,18 @@ const menuItems = [
         key: '/contact', label: '联系我们', children: [],
         level: ''
     },
+    {
+        /*首页搜索框搜索内容*/
+        key: '/result', label: '搜索结果', children: [],
+        level: ''
+    },
+    {
+        key: '/message', label: '信息中心', children: [
+            {key: '/message/new', label: '新闻动态'},
+            {key: '/message/notice', label: '通知公告'}
+        ],
+        level: ''
+    }
 ]
 
 const ContentLayout = ({children}) => {
@@ -103,8 +114,10 @@ const ContentLayout = ({children}) => {
                             {selectedItem.label}
                         </Link>
                         {/*!渲染正文*/}
-                        {selectedItem.level != '' && selectedKey != selectedItem.key && (
+                        {selectedKey.split('/')[selectedKey.split('/').length - 1] === 'detail' && (
                             <div>{'>>'}<span style={{color: '#0b6bb7'}}>正文</span></div>)}
+                        {/* {selectedItem.level != '' && selectedKey != selectedItem.key && (
+                            <div>{'>>'}<span style={{color: '#0b6bb7'}}>正文</span></div>)}*/}
                         {selectedItem.children && selectedItem.children.length > 0 && (
                             <Link
                                 to={selectedKey}
@@ -125,7 +138,7 @@ const ContentLayout = ({children}) => {
                         )}
                     </span>
                 </div>
-                <Divider style={{marginTop: '0', marginBottom: '10px', color: 'blue'}}/>
+                <Divider style={{marginTop: '0', marginBottom: '10px', color: '#274171'}}/>
 
                 {/* 菜单栏 */}
                 <div style={{
@@ -133,7 +146,9 @@ const ContentLayout = ({children}) => {
                     backgroundColor: '#fdfdfd',
                     padding: '10px',
                     float: 'left',
-                    marginTop: '10px'
+                    marginTop: '10px',
+                    borderRadius: '10px',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0.5, 0.5)' /* 轻微的阴影效果 */
                 }}>
                     {/* 是一个特殊的菜单项*/}
                     <div key={selectedItem.key + '/'} style={{
