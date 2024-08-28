@@ -1,6 +1,6 @@
 import {CaretRightOutlined, ExperimentOutlined, LeftOutlined, MonitorOutlined, RightOutlined} from "@ant-design/icons";
 import {Link} from "react-router-dom";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import './index.css'
 import {Button, Card, Col, Row} from "antd";
 import './projectComponent.css'
@@ -129,6 +129,9 @@ const ProjectComponent = () => {
             fontSize: '16px',
             fontWeight: 'bold',
         },
+        moreLink: {
+            fontSize: '16px', color: '#007bff', textDecoration: 'none', cursor: 'pointer', fontWeight: 'bold'
+        },
     };
     const [currentIndex, setCurrentIndex] = useState(0);
     useEffect(() => {
@@ -164,8 +167,8 @@ const ProjectComponent = () => {
                     <MonitorOutlined style={{marginRight: '8px'}}/>
                     科研项目
                 </div>
-                <Link to="/projects/achievement" style={{color: '#007bff', textDecoration: 'none', fontWeight: 'bold'}}>
-                    More <CaretRightOutlined/>
+                <Link to="/projects/achievement" style={styles.moreLink}>
+                    More <CaretRightOutlined style={{marginLeft: '4px', verticalAlign: 'middle'}}/>
                 </Link>
             </div>
             <Row gutter={[16, 16]}>

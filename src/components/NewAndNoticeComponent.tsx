@@ -119,7 +119,7 @@ const NewAndNoticeComponent = () => {
                     通知公告
                 </div>
                 <Link to={'/message/notice'} style={styles.moreLink}>More
-                    <CaretRightOutlined/>
+                    <CaretRightOutlined style={{marginLeft: '4px', verticalAlign: 'middle'}}/>
                 </Link>
             </div>
             <List
@@ -151,7 +151,7 @@ const NewAndNoticeComponent = () => {
                     新闻动态
                 </div>
                 <Link to={'/message/new'} style={styles.moreLink}>More
-                    <CaretRightOutlined/>
+                    <CaretRightOutlined style={{marginLeft: '4px', verticalAlign: 'middle'}}/>
                 </Link>
             </div>
             <List
