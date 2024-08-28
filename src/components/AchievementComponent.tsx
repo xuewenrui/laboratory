@@ -59,7 +59,7 @@ const AchievementComponent = () => {
     }
     return (
         <div className="achievement-container"
-             style={{padding: '20px', background: '#f9f9f9', borderRadius: '8px', overflow: 'hidden'}}>
+             style={{padding: '20px', borderRadius: '8px', overflow: 'hidden'}}>
             <div style={styles.header}>
                 {/* 将图标和标题包裹在一个额外的flex容器中 */}
                 <div style={styles.headerTitle}>
