@@ -2,10 +2,10 @@
  * 研究成果组件
  * @constructor
  */
-import React, {useState} from 'react';
-import {Card, Button, Row, Col} from 'antd';
+import React from 'react';
+import {Card, Row, Col} from 'antd';
 import 'antd/dist/antd.css';
-import {CaretRightOutlined, ExperimentOutlined, NotificationOutlined} from "@ant-design/icons";
+import {CaretRightOutlined, ExperimentOutlined} from "@ant-design/icons";
 import {Link} from "react-router-dom"; // 引入Ant Design样式
 
 const AchievementComponent = () => {
