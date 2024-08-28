@@ -44,6 +44,11 @@ export default [
         component: '@/pages/projects/project'
     },
     {
+        path: '/projects/project/detail/:projectId',
+        component: '@/pages/projects/projectDetail'
+    },
+
+    {
         path: '/projects/achievement',
         component: '@/pages/projects/achievement'
     },
@@ -78,11 +83,6 @@ export default [
         name: "联系我们",
     },
     {
-        component: "@/pages/test",
-        path: "/test",
-        name: "仅供测试",
-    },
-    {
         component: "@/pages/genome",
         path: "/genomes",
     },
@@ -101,8 +101,16 @@ export default [
         component: '@/pages/message/new'
     },
     {
+        path: '/message/new/detail/:id',
+        component: '@/pages/message/newDetail'   //新闻详情
+    },
+    {
         path: '/message/notice',
         component: '@/pages/message/notice'
+    },
+    {
+        path: '/message/notice/detail/:id',
+        component: '@/pages/message/noticeDetail'   //新闻详情
     },
     /*自定义404页面*/
     {

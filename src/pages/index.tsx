@@ -8,6 +8,7 @@ import carousel03 from '@/assets/carousel03.jpg'
 import carousel04 from '@/assets/carousel04.jpg'
 import NewAndNoticeComponent from "@/components/NewAndNoticeComponent";
 import AchievementComponent from "@/components/AchievementComponent";
+import ProjectComponent from "@/components/ProjectComponent";
 
 function CarouselComponent() {
     // 轮播图数据和说明
@@ -56,7 +57,7 @@ function CarouselComponent() {
                                 padding: '5px 10px',
                                 borderRadius: '5px'
                             }}>
-                                {slide.description}
+                              {/*  {slide.description}*/}
                             </div>
                         </div>
                     ))}
@@ -64,10 +65,11 @@ function CarouselComponent() {
             </div>
             <div style={{
                 width: '70%',
-                marginLeft: '18%',
+                marginLeft: '16%',
                 backgroundColor:'#fff'
             }}>
                 <NewAndNoticeComponent/>
+                <ProjectComponent/>
                 <AchievementComponent/>
             </div>
 

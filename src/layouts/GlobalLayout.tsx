@@ -16,15 +16,17 @@ const {Header, Content, Footer} = Layout;
 function GlobalLayout({children}) {
     const navigate = useNavigate();
     const footerStyle = {
-        bottom: 0,
-        width: '100%',
-        background: '#274171',
-        color: 'white',
-        textAlign: 'center',
-        minHeight: '250px',
-        lineHeight: '180px',
-        backgroundImage: `url(${logo2})`,
-    }
+            bottom: 0,
+            width: '100%',
+            background: '#274171',
+            color: 'white',
+            textAlign: 'center',
+            minHeight: '250px',
+            lineHeight: '180px',
+            backgroundImage: `url(${logo2})`,
+            boxShadow: '0 -3px 10px rgba(39, 65, 113, 0.2)', // 添加上边框阴影
+            marginTop: '10px',
+        }
     //!导航栏项列表
     const menuItems = [
         {key: '/home', label: '首页', children: []},
@@ -39,6 +41,12 @@ function GlobalLayout({children}) {
         },
         {key: '/member', label: '实验室成员', children: []},
         {
+            key: '/message', label: '信息中心', children: [
+                {key: '/message/new', label: '新闻动态'},
+                {key: '/message/notice', label: '通知公告'}
+            ]
+        },
+        {
             key: '/projects', label: '科学研究',
             children: [
                 {key: '/projects/direction', label: '研究方向'},
@@ -51,12 +59,6 @@ function GlobalLayout({children}) {
             children: [
                 {key: '/articles/paper', label: '论文'},
                 {key: '/articles/patent', label: '专利'},
-            ]
-        },
-        {
-            key: '/message', label: '信息中心', children: [
-                {key: '/message/new', label: '新闻动态'},
-                {key: '/message/notice', label: '通知公告'}
             ]
         },
         {
@@ -119,7 +121,7 @@ function GlobalLayout({children}) {
     };
 
     return (
-        <Layout style={{minHeight: '100vh',backgroundColor:'#fff'}}>
+        <Layout style={{minHeight: '100vh', backgroundColor: '#fff'}}>
             <Header style={{
                 display: 'flex',
                 alignItems: 'center', // 垂直居中

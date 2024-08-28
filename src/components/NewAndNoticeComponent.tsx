@@ -13,56 +13,56 @@ const notices = [
     {
         title: '关于实验室器材的使用的注意事项',
         createdTime: '2024-08-27',
-        link: '/about/introduction'
+        link: '/message/notice/detail/1'
     },
     {
         title: '实验室安全培训通知',
         createdTime: '2024-08-27',
-        link: '/about/introduction'
+        link: '/message/notice/detail/2'
     },
     {
         title: '设备维护与暂停使用通知',
         createdTime: '2024-08-27',
-        link: '/about/introduction'
+        link: '/message/notice/detail/3'
     },
     {
         title: '实验室开放时间与假期安排通知',
         createdTime: '2024-08-27',
-        link: '/about/introduction'
+        link: '/message/notice/detail/4'
     },
     {
         title: '新进人员培训与入室手续通知',
         createdTime: '2024-08-27',
-        link: '/about/introduction'
+        link: '/message/notice/detail/5'
     },
-    // 更多通知公告...
+
 ];
 
 const news = [
     {
         title: '全新升级！实验室官方网站震撼上线，科研资源共享更便捷',
         createdTime: '2024-08-27',
-        link: '/about/introduction'
+        link: '/message/new/detail/1'
     },
     {
         title: '引领科研新风尚：实验室网站启用智能搜索，加速科研成果发现',
         createdTime: '2024-08-27',
-        link: '/about/introduction'
+        link: '/message/new/detail/2'
     },
     {
         title: '科研新门户，探索无界！XX实验室网站新增在线实验预约功能',
         createdTime: '2024-08-27',
-        link: '/about/introduction'
+        link: '/message/new/detail/3'
     },
     {
         title: '创新引领未来：研究所官方网站推出科研项目在线申报系统',
         createdTime: '2024-08-27',
-        link: '/about/introduction'
+        link: '/message/new/detail/4'
     },
     {
         title: '强化国际合作，实验室网站新增多语言版本，助力全球科研交流',
         createdTime: '2024-08-27',
-        link: '/about/introduction'
+        link: '/message/new/detail/5'
     },
 ];
 
@@ -102,9 +102,7 @@ const NewAndNoticeComponent = () => {
             color: 'inherit'
         },
         moreLink: {
-            cursor: 'pointer', // 添加鼠标悬停效果
-            textDecoration: 'none',
-            color: '#007bff', // 更清晰的链接颜色
+            fontSize: '16px', color: '#007bff', textDecoration: 'none', cursor: 'pointer', fontWeight: 'bold'
         },
         divider: {
             margin: '8px 0', // 调整分隔符的间距
@@ -120,7 +118,7 @@ const NewAndNoticeComponent = () => {
                     <NotificationOutlined style={{marginRight: '8px'}}/>
                     通知公告
                 </div>
-                <Link to={'/about/introduction'} style={styles.moreLink}>More
+                <Link to={'/message/notice'} style={styles.moreLink}>More
                     <CaretRightOutlined/>
                 </Link>
             </div>
@@ -152,7 +150,7 @@ const NewAndNoticeComponent = () => {
                     <PaperClipOutlined color='blue' style={{marginRight: '8px'}}/>
                     新闻动态
                 </div>
-                <Link to={'/about/introduction'} style={styles.moreLink}>More
+                <Link to={'/message/new'} style={styles.moreLink}>More
                     <CaretRightOutlined/>
                 </Link>
             </div>
@@ -177,9 +175,10 @@ const NewAndNoticeComponent = () => {
     );
     const cardStyles = {
         width: '100%', // 或者你想要的任何宽度
-        marginBottom: '20px', // 底部外边距
-        marginTop: '20px',
-        //boxShadow: '10px 10px 10px 10px rgba(0, 0, 0, 0.15)'
+        marginBottom: '0px', // 底部外边距
+        marginTop: '5px',
+        boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+        borderRadius: '8px'
     };
 
     return (

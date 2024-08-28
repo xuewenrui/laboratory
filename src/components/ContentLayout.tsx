@@ -16,19 +16,17 @@ const menuItems = [
             {key: '/about/facilities', label: '设施设备'},
             {key: '/about/add', label: '加入我们'},
         ],
-        level: ''
     },
     {
-        key: '/member', label: '实验室成员', children: [], level: '/member/detail/'
+        key: '/member', label: '实验室成员', children: []
     },
     {
         key: '/projects', label: '科学研究',
         children: [
             {key: '/projects/direction', label: '研究方向'},
             {key: '/projects/project', label: '科研项目'},
-            {key: '/projects/achievement', label: '研究成果', level: '/projects/achievement/detail'},
+            {key: '/projects/achievement', label: '研究成果'},
         ],
-        level: ''
     },
     {
         key: '/articles', label: '论文专利',
@@ -36,23 +34,19 @@ const menuItems = [
             {key: '/articles/paper', label: '论文'},
             {key: '/articles/patent', label: '专利'},
         ],
-        level: ''
     },
     {
         key: '/contact', label: '联系我们', children: [],
-        level: ''
     },
     {
         /*首页搜索框搜索内容*/
         key: '/result', label: '搜索结果', children: [],
-        level: ''
     },
     {
         key: '/message', label: '信息中心', children: [
             {key: '/message/new', label: '新闻动态'},
             {key: '/message/notice', label: '通知公告'}
         ],
-        level: ''
     }
 ]
 
@@ -77,6 +71,9 @@ const ContentLayout = ({children}) => {
             </>
         ); // 如果 selectedItem 为 null，显示加载加载组件
     }
+     /*!找寻item,主要是针对包含detail的路径*/
+    const foundItem = selectedItem.children.find(item => item.key === selectedKey) ||
+        selectedItem.children.find(item => selectedKey.startsWith(item.key));
     const Sidebar = () => {
         return (
             <>
@@ -106,18 +103,9 @@ const ContentLayout = ({children}) => {
                                 textDecoration: 'none',
                                 transition: 'color 0.3s'
                             }}
-                            onMouseEnter={() => {
-                            }}
-                            onMouseLeave={() => {
-                            }}
                         >
                             {selectedItem.label}
                         </Link>
-                        {/*!渲染正文*/}
-                        {selectedKey.split('/')[selectedKey.split('/').length - 1] === 'detail' && (
-                            <div>{'>>'}<span style={{color: '#0b6bb7'}}>正文</span></div>)}
-                        {/* {selectedItem.level != '' && selectedKey != selectedItem.key && (
-                            <div>{'>>'}<span style={{color: '#0b6bb7'}}>正文</span></div>)}*/}
                         {selectedItem.children && selectedItem.children.length > 0 && (
                             <Link
                                 to={selectedKey}
@@ -125,17 +113,14 @@ const ContentLayout = ({children}) => {
                                     color: selectedKey === selectedItem.children.find(item => item.key === selectedKey)?.key ? '#0b6bb7' : 'black',
                                     textDecoration: 'none',
                                     transition: 'color 0.3s'
-                                }}
-                                onMouseEnter={() => {
-
-                                }}
-                                onMouseLeave={() => {
-                                }}
-                            >
+                                }}>
                                 {' >> '}
-                                {selectedItem.children.find(item => item.key === selectedKey)?.label}
+                                {foundItem?.label || ''}
                             </Link>
                         )}
+                        {/*!渲染正文 判断导航栏路径是否倒数第二个为'detail*/}
+                        {selectedKey.includes('detail')&&selectedKey.split('/')[selectedKey.split('/').length - 2] === 'detail' && (
+                            <div>{'>>'}<span style={{color: '#0b6bb7'}}>正文</span></div>)}
                     </span>
                 </div>
                 <Divider style={{marginTop: '0', marginBottom: '10px', color: '#274171'}}/>
@@ -169,14 +154,12 @@ const ContentLayout = ({children}) => {
                                 to={item.key}
                                 key={item.key}
                                 onClick={() => setSelectedKey(item.key)}
-                                className={`link-item ${item.key === selectedKey ? 'selected' : ''}`}
+                                className={`link-item ${(item.key === selectedKey || selectedKey.startsWith(item.key)) ? 'selected' : ''}`}
                             >
                                 {item.label}
                             </Link>
                         ))}
-
                     </div>
-
                 </div>
             </>
         );

@@ -1,0 +1,27 @@
+.card {
+    width: 100%; /* 确保卡片宽度充满容器 */
+    position: relative; /* 保持相对定位 */
+    overflow: hidden; /* 隐藏超出部分 */
+    border: 1px solid #ccc; /* 可选，添加边框 */
+    border-radius: 8px; /* 可选，圆角边框 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 可选，添加阴影 */
+    transition: transform 0.3s ease; /* 可选，添加过渡效果 */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* 鼠标悬停时轻微上移 */
+}
+
+.cardHoverName {
+    position: absolute; /* 绝对定位 */
+    bottom: 20px; /* 距离底部一定距离 */
+    left: 50%; /* 水平居中准备 */
+    transform: translateX(-50%); /* 水平居中 */
+    width: calc(100% - 40px); /* 减去左右padding（如果有的话） */
+    background-color: rgba(0, 0, 0, 0.5); /* 背景色，半透明黑色 */
+    color: white; /* 文本颜色 */
+    padding: 5px 10px; /* 内边距 */
+    border-radius: 4px; /* 圆角 */
+    text-align: center; /* 确保文本居中 */
+    pointer-events: none; /* 防止遮挡链接点击 */
+}
