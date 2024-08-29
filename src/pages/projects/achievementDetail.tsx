@@ -1,6 +1,6 @@
 
 import GlobalLayout from "@/layouts/GlobalLayout";
-import {Divider, Layout} from "antd";
+import {Layout} from "antd";
 import BackgroundImage from "@/components/BackgroundImage";
 import ContentLayout from "@/components/ContentLayout";
 import React from "react";
