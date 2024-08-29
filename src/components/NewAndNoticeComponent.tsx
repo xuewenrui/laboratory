@@ -8,7 +8,7 @@ import {
 import 'antd/dist/antd.css'; // 引入Ant Design样式
 import './index.css'
 import {Link} from "react-router-dom";
-// 假设的数据
+// !假设的数据
 const notices = [
     {
         title: '关于实验室器材的使用的注意事项',
@@ -68,6 +68,10 @@ const news = [
 
 const NewAndNoticeComponent = () => {
     const styles = {
+        zoomableImageHover: {
+            transform: 'scale(1.1)',
+            transition: 'transform 0.3s ease'
+        },
         container: {
             display: 'flex',
             justifyContent: 'space-between',
@@ -102,14 +106,15 @@ const NewAndNoticeComponent = () => {
             color: 'inherit'
         },
         moreLink: {
-            fontSize: '16px', color: '#007bff', textDecoration: 'none', cursor: 'pointer', fontWeight: 'bold'
+            fontSize: '16px', color: '#007bff', textDecoration: 'none', cursor: 'pointer', fontWeight: 'bold',
+
         },
         divider: {
             margin: '8px 0', // 调整分隔符的间距
         },
     };
 
-    // 渲染左侧通知公告部分
+    // !渲染左侧通知公告部分
     const renderNoticeSection = () => (
         <div style={styles.section}>
             <div style={styles.header}>
@@ -118,7 +123,7 @@ const NewAndNoticeComponent = () => {
                     <NotificationOutlined style={{marginRight: '8px'}}/>
                     通知公告
                 </div>
-                <Link to={'/message/notice'} style={styles.moreLink}>More
+                <Link to={'/message/notice'} className='moreLink'>More
                     <CaretRightOutlined style={{marginLeft: '4px', verticalAlign: 'middle'}}/>
                 </Link>
             </div>
@@ -130,7 +135,7 @@ const NewAndNoticeComponent = () => {
                         <a href={item.link}
                            style={styles.listItem}>
                             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                                <span className="hover-title"
+                                <span className="hover-title zoomable-image"
                                       title={item.title}>{item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}</span>
                                 <span style={{fontSize: '12px', color: '#999'}}>{item.createdTime}</span>
                             </div>
@@ -142,7 +147,7 @@ const NewAndNoticeComponent = () => {
         </div>
     );
 
-    // 渲染右侧新闻动态部分
+    // !渲染右侧新闻动态部分
     const renderNewsSection = () => (
         <div style={styles.section}>
             <div style={styles.header}>
@@ -150,7 +155,7 @@ const NewAndNoticeComponent = () => {
                     <PaperClipOutlined color='blue' style={{marginRight: '8px'}}/>
                     新闻动态
                 </div>
-                <Link to={'/message/new'} style={styles.moreLink}>More
+                <Link to={'/message/new'} className='moreLink' >More
                     <CaretRightOutlined style={{marginLeft: '4px', verticalAlign: 'middle'}}/>
                 </Link>
             </div>
@@ -162,7 +167,7 @@ const NewAndNoticeComponent = () => {
                         <a href={item.link}
                            style={styles.listItem}>
                             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                                <span className="hover-title"
+                                <span className="hover-title zoomable-image"
                                       title={item.title}>{item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}</span>
                                 <span style={{fontSize: '12px', color: '#999'}}>{item.createdTime}</span>
                             </div>
@@ -174,7 +179,7 @@ const NewAndNoticeComponent = () => {
         </div>
     );
     const cardStyles = {
-        width: '100%', // 或者你想要的任何宽度
+        width: '100%',
         marginBottom: '0px', // 底部外边距
         marginTop: '5px',
         boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
@@ -182,10 +187,10 @@ const NewAndNoticeComponent = () => {
     };
 
     return (
-        <Card style={cardStyles} > {/* Card组件，可以添加标题和额外内容 */}
-            <div style={{ display: 'flex', alignItems: 'stretch' }}> {/* 使用flex布局来更好地控制子元素 */}
+        <Card style={cardStyles}>
+            <div style={{display: 'flex', alignItems: 'stretch'}}>
                 {renderNoticeSection()}
-                <Divider type="vertical" style={{ height: '100%', margin: '0 1%' }} /> {/* 垂直分隔符 */}
+                <Divider type="vertical" style={{height: '100%', margin: '0 1%'}}/> {/* !垂直分隔符 */}
                 {renderNewsSection()}
             </div>
         </Card>

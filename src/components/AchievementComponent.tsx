@@ -53,9 +53,7 @@ const AchievementComponent = () => {
             fontSize: '16px',
             fontWeight: 'bold',
         },
-        moreLink: {
-            fontSize: '16px', color: '#007bff', textDecoration: 'none', cursor: 'pointer', fontWeight: 'bold'
-        },
+
     }
     return (
         <div className="achievement-container"
@@ -66,7 +64,7 @@ const AchievementComponent = () => {
                     <ExperimentOutlined style={{marginRight: '8px'}}/>
                     研究成果
                 </div>
-                <Link to="/projects/achievement" style={styles.moreLink}>
+                <Link to="/projects/achievement" className='moreLink'>
                     More <CaretRightOutlined style={{marginLeft: '4px', verticalAlign: 'middle'}}/>
                 </Link>
             </div>
@@ -101,13 +99,15 @@ const AchievementComponent = () => {
                                      backgroundColor: '#fff',
                                      borderTop: '1px solid #eee',
                                      overflow: 'hidden', // 隐藏超出部分
-                                     fontSize: '14px'   }}>
+                                     fontSize: '14px'
+                                 }}>
                                 <Link to={image.link} className="card-link" style={{
                                     textDecoration: 'none',
                                     color: '#333',
                                     fontWeight: 'bold'
                                 }}>
-                                    {image.title}
+                                    <span
+                                        title={image.title}>{image.title.length > 20 ? image.title.slice(0, 20) + '...' : image.title}</span>
                                 </Link>
                             </div>
                         </Card>

@@ -16,17 +16,17 @@ const {Header, Content, Footer} = Layout;
 function GlobalLayout({children}) {
     const navigate = useNavigate();
     const footerStyle = {
-            bottom: 0,
-            width: '100%',
-            background: '#274171',
-            color: 'white',
-            textAlign: 'center',
-            minHeight: '250px',
-            lineHeight: '180px',
-            backgroundImage: `url(${logo2})`,
-            boxShadow: '0 -3px 10px rgba(39, 65, 113, 0.2)', // 添加上边框阴影
-            marginTop: '10px',
-        }
+        bottom: 0,
+        width: '100%',
+        background: '#274171',
+        color: 'white',
+        textAlign: 'center',
+        minHeight: '250px',
+        lineHeight: '180px',
+        backgroundImage: `url(${logo2})`,
+        boxShadow: '0 -3px 10px rgba(39, 65, 113, 0.2)', // 添加上边框阴影
+        marginTop: '10px',
+    }
     //!导航栏项列表
     const menuItems = [
         {key: '/home', label: '首页', children: []},
@@ -155,7 +155,8 @@ function GlobalLayout({children}) {
                     <br/> {/* 如果需要，可以在中英文之间添加换行 */}
                     <span style={{fontSize: '20px'}}>Digital Life and Intelligent Health Laboratory</span>
                 </div>
-                <div style={{
+                {/*!搜索框*/}
+                  <div style={{
                     marginLeft: 'auto', // 将搜索框推向右侧
                     marginRight: '30px' // 给搜索框右侧添加间距
                 }}>
