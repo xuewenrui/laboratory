@@ -1,12 +1,11 @@
 import GlobalLayout from "@/layouts/GlobalLayout";
-import {Card, Layout} from "antd";
+import {Layout} from "antd";
 import ContentLayout from "@/components/ContentLayout";
 import BackgroundImage from "@/components/BackgroundImage";
 
 function Index() {
 
     return (
-
         <GlobalLayout>
             <Layout>
                 <BackgroundImage/>
