@@ -109,7 +109,7 @@ const TeamCard = () => {
                 <div style={{width: 1200, margin: 'auto'}}>
                     <ContentLayout>
                         <Card style={customStyles.cardContainer}>
-                            <Title style={customStyles.title}>老师</Title>
+                            <Title style={customStyles.title}>实验室导师</Title>
                             <Row gutter={[24, 24]}>
                                 {members.map(member => (member.status === '0' && <TeamMember member={member} key={member.id}/>))}
                             </Row>

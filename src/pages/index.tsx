@@ -46,15 +46,15 @@ function CarouselComponent() {
         {
             key: '3',
             src: carousel03,
-            alt: 'T深度学习驱动的医学影像智能诊断模型“MediVision',
-            description: 'T深度学习驱动的医学影像智能诊断模型“MediVision',
+            alt: 'T深度学习驱动的医学影像智能诊断模型“MediVision”',
+            description: 'T深度学习驱动的医学影像智能诊断模型“MediVision”',
             link: '/projects/achievement/detail/1'
         },
         {
             key: '4',
             src: carousel04,
-            alt: '基于自然语言处理与医学影像的肺癌智能筛查模型“LungGuard AI',
-            description: '基于自然语言处理与医学影像的肺癌智能筛查模型“LungGuard AI',
+            alt: '基于自然语言处理与医学影像的肺癌智能筛查模型“LungGuard AI”',
+            description: '基于自然语言处理与医学影像的肺癌智能筛查模型“LungGuard AI”',
             link: '/projects/achievement/detail/3'
         },
     ];
