@@ -15,7 +15,10 @@ export default defineConfig({
     },
     history: {
         type: 'hash',
-    },
+    },/*hash 模式会在 URL 中使用 # 符号来进行路由管理，
+    而不依赖服务器端来处理路径。GitHub Pages 是静态文件托管服务，无法处理像 /home 这样的深层路径请求，
+    因此直接访问 /home 会返回 404。使用 hash 模式后，URL 会变成 https://xuewenrui.github.io/laboratory/#/home，
+    这种 URL 是完全由前端处理的，不会经过服务器端，因此不会产生 404 问题。*/
     routes,
     npmClient: 'npm',
     base: '/laboratory/',
