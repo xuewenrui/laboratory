@@ -16,4 +16,5 @@ export default defineConfig({
 
     routes,
     npmClient: 'npm',
+    publicPath: '/laboratory/', // 替换为你的 GitHub 仓库名
 });
