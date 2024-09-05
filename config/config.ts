@@ -13,7 +13,7 @@ export default defineConfig({
             pathRewrite: {'^/api': ''}, // 路径重写
         },
     },
-   /* history: {
+/*    history: {
         type: 'hash',
     },*//*hash 模式会在 URL 中使用 # 符号来进行路由管理，
     而不依赖服务器端来处理路径。GitHub Pages 是静态文件托管服务，无法处理像 /home 这样的深层路径请求，
