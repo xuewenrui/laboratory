@@ -178,6 +178,7 @@ const NewAndNoticeComponent = () => {
             />
         </div>
     );
+
     const cardStyles = {
         width: '100%',
         marginBottom: '0px', // 底部外边距
@@ -185,7 +186,7 @@ const NewAndNoticeComponent = () => {
         boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
         borderRadius: '8px'
     };
-
+/*dsff*/
     return (
         <Card style={cardStyles}>
             <div style={{display: 'flex', alignItems: 'stretch'}}>
