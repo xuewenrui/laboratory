@@ -132,14 +132,14 @@ const NewAndNoticeComponent = () => {
                 dataSource={notices}
                 renderItem={item => (
                     <List.Item>
-                        <a href={item.link}
-                           style={styles.listItem}>
+                        <Link to={item.link}
+                              style={styles.listItem}>
                             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                                 <span className="hover-title zoomable-image"
                                       title={item.title}>{item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}</span>
                                 <span style={{fontSize: '12px', color: '#999'}}>{item.createdTime}</span>
                             </div>
-                        </a>
+                        </Link>
                         <Divider dashed={true}/>
                     </List.Item>
                 )}
@@ -155,7 +155,7 @@ const NewAndNoticeComponent = () => {
                     <PaperClipOutlined color='blue' style={{marginRight: '8px'}}/>
                     新闻动态
                 </div>
-                <Link to={'/message/new'} className='moreLink' >More
+                <Link to={'/message/new'} className='moreLink'>More
                     <CaretRightOutlined style={{marginLeft: '4px', verticalAlign: 'middle'}}/>
                 </Link>
             </div>
@@ -164,14 +164,14 @@ const NewAndNoticeComponent = () => {
                 dataSource={news}
                 renderItem={item => (
                     <List.Item>
-                        <a href={item.link}
-                           style={styles.listItem}>
+                        <Link to={item.link}
+                              style={styles.listItem}>
                             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                                 <span className="hover-title zoomable-image"
                                       title={item.title}>{item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}</span>
                                 <span style={{fontSize: '12px', color: '#999'}}>{item.createdTime}</span>
                             </div>
-                        </a>
+                        </Link>
                         <Divider dashed={true}/>
                     </List.Item>
                 )}
