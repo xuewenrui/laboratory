@@ -3,12 +3,12 @@
   "author": "'袁瑞' <'2502099390@qq.com'>",
   "scripts": {
     "dev": "umi dev",
-    "build": "umi build",
     "postinstall": "umi setup",
     "setup": "umi setup",
     "start": "npm run dev",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "build": "umi build",
+    "deploy": "gh-pages -d dist"
+
   },
   "dependencies": {
     "@umijs/max": "^4.3.12",
